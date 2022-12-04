@@ -2,7 +2,7 @@ import { prisma } from "@/config";
 import { Enrollment } from "@prisma/client";
 
 async function findWithAddressByUserId(userId: number) {
-  return prisma.enrollment.findFirst({
+  return  prisma.enrollment.findFirst({
     where: { userId },
     include: {
       Address: true,

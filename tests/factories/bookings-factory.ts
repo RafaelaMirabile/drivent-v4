@@ -22,8 +22,25 @@ export async function createRoomWIthNoCapacity(idHotel: number) {
   return await prisma.room.create({
     data: {
       name: faker.random.word(),
+      capacity: 3,
+      hotelId: idHotel
+    }
+  });
+}
+export async function createRoomWIthCapacity(idHotel: number) {
+  return await prisma.room.create({
+    data: {
+      name: faker.random.word(),
       capacity: 0,
       hotelId: idHotel
     }
   });
 }
+
+export async function updatedBoking(idRoom: number, idBooking: number) {
+  return prisma.booking.update({
+    where: { id: idBooking },
+    data: { roomId: idRoom }
+  });
+}
+

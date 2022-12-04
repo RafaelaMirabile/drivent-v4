@@ -31,10 +31,18 @@ export async function findRoom(idRoom: number) {
   });
 }
 
+export async function updateBoking(idRoom: number, idBooking: number) {
+  return prisma.booking.update({
+    where: { id: idBooking },
+    data: { roomId: idRoom }
+  });
+}
+
 const bookingRepository = {
   findBooking,
   createBookedRoom,
-  findRoom
+  findRoom,
+  updateBoking
 };
 
 export default bookingRepository;
